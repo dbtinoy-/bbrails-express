@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>express planet redraw</title>
+  <link rel="stylesheet" href="bundle/bundle.css">
+
+</head>
+<body>
+  <div id="wrap">
+    <div id="header-region"></div>
+    <div id="main-region"></div>
+    <div id="push"></div>
+  </div>
+  <div id="footer-region"></div>
+  <!-- <div id="dialog-region" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div> -->
+  <div id="dialog-region"></div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+
+  <!-- // <script src="components/backbone.dualstorage/backbone.dualstorage.js"></script> -->
+  <script src="bundle/vendor.js"></script>
+  <script src="bundle/bundle.js"></script>
+
+  <script>
+    $(function() {
+      JabberApp.start({
+        clientinfo: '{{clientinfo}}'
+      , environment: '{{env}}'
+      });
+    });
+  </script>
+  <!-- endbuild -->
+</body>
+</html>

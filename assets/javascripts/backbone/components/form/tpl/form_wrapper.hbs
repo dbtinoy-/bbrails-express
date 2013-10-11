@@ -1,0 +1,17 @@
+<div class="well">
+  <div id="form-content-region"></div>
+  {{#if footer}}
+    <footer>
+      {{#if buttons}}
+        <ul class="list-inline">
+          {{#each buttons}}
+            <li>
+              <button type="{{buttonType}}" data-form-button="{{type}}" class="{{className}}">{{text}}</button>
+            </li>
+          {{/each}}
+        </ul>
+        <div class="clear-fix"></div>
+      {{/if}}
+    </footer>
+  {{/if}}
+</div>

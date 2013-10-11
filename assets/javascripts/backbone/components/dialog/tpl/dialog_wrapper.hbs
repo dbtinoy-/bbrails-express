@@ -1,0 +1,20 @@
+<div class="modal-content">
+  {{#if config.header}}
+    <div class="modal-header">
+      {{#if config.header_cross}}
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      {{/if}}
+      <h4 class="modal-title">{{config.header_title}}</h4>
+    </div>
+  {{/if}}
+  <div class="modal-body" id="dialog-content-region"></div>
+  {{#if config.footer}}
+    <div class="modal-footer">
+      {{#if buttons}}
+        {{#each buttons}}
+          <button type="{{buttonType}}" data-form-button="{{type}}" class="{{className}}">{{text}}</button>
+        {{/each}}
+      {{/if}}
+    </div>
+  {{/if}}
+</div><!-- /.modal-content -->

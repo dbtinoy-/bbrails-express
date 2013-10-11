@@ -1,0 +1,30 @@
+form {
+  &[data-type='new']  {
+    .well {
+      background-color: lighten(@success-color, 50%);
+    }
+  }
+  &[data-type='edit'] {
+  }
+  footer {
+    border-top: 1px solid @white;
+    .box-shadow(0 -1px 0 darken(@secondary-color, 5%));
+
+    padding-top: 15px;
+  }
+  fieldset {
+    border-width: 1px 0 0;
+    legend {
+      color: #888;
+    }
+  }
+  footer {
+    margin-top: 10px;
+    overflow: auto;
+  }
+  .hint {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+  }
+}

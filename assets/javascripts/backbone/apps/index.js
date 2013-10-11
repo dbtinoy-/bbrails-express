@@ -1,0 +1,9 @@
+require('./header');
+require('./footer');
+require('./crew');
+require('./events');
+require('./rentals');
+require('./search');
+require('./dashboard');
+require('./dashboard_theatres');
+require('./dashboard_upcoming');
