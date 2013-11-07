@@ -2,3 +2,5 @@ assets/bower_components
 node_modules
 public/bundle
 nbproject
+*.sublime-project
+*.sublime-workspace

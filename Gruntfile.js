@@ -56,7 +56,7 @@ module.exports = function (grunt) {
           }
         //backbone need underscore alias :(
         , alias : [
-            'node_modules/lodash:underscore'
+            'lodash:underscore'
           , '<%= bower_src %>/jquery/jquery.js:jquery'
           , '<%= bower_src %>/spinjs/spin.js:spin'
           ]

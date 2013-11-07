@@ -31,7 +31,7 @@ function formControllerDef(Form, App, Backbone, Marionette, $, _) {
     }
 
   , processFormData: function(data, model, collection) {
-      model.save(data, collection);
+      model.save(data, {collection: collection});
     }
 
   , onClose: function() {
