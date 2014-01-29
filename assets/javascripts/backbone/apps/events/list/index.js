@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('EventsApp.List', function(List, App, Backbone, Marionette, $, _) {
 
-  List.Controller = App.Controllers.Base.extend({
+  List.Controller = App.Controllers.Application.extend({
     initialize: function(options) {
       var events = App.request('event:entities')
         , listView = this.getListView(events);

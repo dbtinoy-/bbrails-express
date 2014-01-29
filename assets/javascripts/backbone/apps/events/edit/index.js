@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('EventsApp.Edit', function(Edit, App, Backbone, Marionette, $, _) {
 
-  Edit.Controller = App.Controllers.Base.extend({
+  Edit.Controller = App.Controllers.Application.extend({
     initialize: function (options) {
       var event = options.event
         , editView = this.getEditView(event);

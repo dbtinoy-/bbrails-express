@@ -10,6 +10,7 @@ JabberApp.module('DashboardApp', function(DashboardApp, App, Backbone, Marionett
 
   var API = {
     show: function() {
+      App.vent.trigger('nav:choose', 'Dashboard');
       return new DashboardApp.Show.Controller();
     }
   };

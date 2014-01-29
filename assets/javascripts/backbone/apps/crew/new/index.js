@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('CrewApp.New', function(New, App, Backbone, Marionette, $, _) {
 
-  New.Controller = App.Controllers.Base.extend({
+  New.Controller = App.Controllers.Application.extend({
 
     initialize: function(options) {
       var crew = App.request('new:crew:entity')

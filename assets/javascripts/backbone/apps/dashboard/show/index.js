@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('DashboardApp.Show', function(Show, App, Backbone, Marionette, $, _) {
 
-  Show.Controller = App.Controllers.Base.extend({
+  Show.Controller = App.Controllers.Application.extend({
     initialize: function() {
       this.layout = this.getLayoutView();
 

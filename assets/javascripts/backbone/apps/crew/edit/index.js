@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('CrewApp.Edit', function(Edit, App, Backbone, Marionette, $, _) {
 
-  Edit.Controller = App.Controllers.Base.extend({
+  Edit.Controller = App.Controllers.Application.extend({
     initialize: function(options) {
       var id    = options.id
         , crew  = options.crew;

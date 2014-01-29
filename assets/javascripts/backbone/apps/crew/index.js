@@ -1,14 +1,19 @@
-require('./list');
-require('./new');
-require('./edit');
-
 JabberApp.module('CrewApp', function(CrewApp, App, Backbone, Marionette, $, _) {
+  require('./list');
+  require('./new');
+  require('./edit');
+
+
   CrewApp.Router = Marionette.AppRouter.extend({
     appRoutes: {
       'crew':           'list'
     , 'crew/:id/edit':  'edit'
     }
+  , before: function() {
+      App.vent.trigger('nav:choose', 'Crew');
+    }
   });
+
 
   var API = {
     list: function() {

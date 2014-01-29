@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('RentalsApp.List', function(List, App, Backbone, Marionette, $, _) {
 
-  List.Controller = App.Controllers.Base.extend({
+  List.Controller = App.Controllers.Application.extend({
     initialize: function() {
       var rentals = App.request('movie:rental:entities');
 

@@ -1,10 +1,8 @@
-require('./config');
+require('../config');
 
 var App = global.JabberApp = new Backbone.Marionette.Application();
 
-require('./controllers');
-require('./views');
-require('./components');
+require('./lib');
 require('./entities');
 require('./apps');
 
@@ -21,30 +19,25 @@ App.rootRoute = 'crew';
 
 App.on('initialize:before', function(options) {
   if (!options.environment) throw new Error('environment must be set');
+
   App.environment = options.environment;
+  App.navs        = App.request('nav:entities');
 });
 
+
 App.addInitializer(function() {
-  this.module('HeaderApp').start();
+  this.module('HeaderApp').start(App.navs);
   this.module('FooterApp').start();
 });
 
+App.vent.on('nav:choose', function(nav) {
+  App.navs.chooseByName(nav);
+});
 
 App.reqres.setHandler('default:region', function() {
   return App.mainRegion;
 });
 
-App.commands.setHandler('register:instance', function(instance, id) {
-  if (App.environment == 'development') {
-    App.register(instance, id);
-  }
-});
-
-App.commands.setHandler('unregister:instance', function(instance, id) {
-  if (App.environment == 'development') {
-    App.unregister(instance, id);
-  }
-});
 
 App.on('initialize:after', function() {
   this.startHistory();

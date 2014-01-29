@@ -2,7 +2,7 @@ require('./view');
 
 JabberApp.module('DashboardTheatreApp.List', function(List, App, Backbone, Marionette, $, _) {
 
-  List.Controller = App.Controllers.Base.extend({
+  List.Controller = App.Controllers.Application.extend({
     initialize: function() {
       var theatres = App.request('theatre:movie:entities')
         , theaterView = this.getTheatreView(theatres);

@@ -2,10 +2,10 @@ require('./view');
 
 JabberApp.module('CrewApp.List', function(List, App, Backbone, Marionette, $, _) {
 
-  List.Controller = App.Controllers.Base.extend({
+  List.Controller = App.Controllers.Application.extend({
     initialize: function() {
       var crew = App.request('crew:entities');
-      this.layout = this.getLayoutView();
+      this.layout = this.getLayoutView(crew);
 
       this.listenTo(this.layout, 'show', function() {
         this.titleRegion();
@@ -13,13 +13,13 @@ JabberApp.module('CrewApp.List', function(List, App, Backbone, Marionette, $, _)
         this.crewRegion(crew);
       });
 
-      this.show(this.layout, { loading: { entities: crew } });
+      this.show(this.layout, { loading: true });
 
     }
 
 
-  , getLayoutView: function() {
-      return new List.Layout();
+  , getLayoutView: function(crew) {
+      return new List.Layout({ collection: crew });
     }
 
   , titleRegion: function() {

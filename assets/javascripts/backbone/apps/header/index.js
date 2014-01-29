@@ -4,14 +4,16 @@ JabberApp.module('HeaderApp', function(HeaderApp, App, Backbone, Marionette, $, 
   this.startWithParent = false;
 
   var API = {
-    list: function() {
+    list: function(navs) {
       return new HeaderApp.List.Controller({
         region: App.headerRegion
+      , navs: navs
       });
     }
   };
 
-  this.on('start', function() {
-    API.list();
+  this.on('start', function(navs) {
+    API.list(navs);
   });
+
 });

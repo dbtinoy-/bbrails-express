@@ -14,6 +14,8 @@ module.exports = function (grunt) {
   , app_cli_js: '<%= app_cli_path %>/javascripts'
   , app_cli_less: '<%= app_cli_path %>/stylesheets'
   , bower_src: '<%= app_cli_path %>/bower_components'
+
+
   , browserify: {
       client: {
         src: ['<%= app_cli_js %>/backbone/app.js']
@@ -32,7 +34,7 @@ module.exports = function (grunt) {
           '<%= bower_src %>/modernizr/modernizr.js'
         , '<%= bower_src %>/jquery/jquery.js'
         , '<%= bower_src %>/backbone/backbone.js'
-        , '<%= bower_src %>/backbone.marionette/lib/backbone.marionette.js'
+        , '<%= bower_src %>/marionette/lib/backbone.marionette.js'
         , '<%= bower_src %>/spinjs/spin.js'
         , '<%= bower_src %>/spinjs/jquery.spin.js'
         ]
@@ -49,7 +51,7 @@ module.exports = function (grunt) {
             }
 
           , marionette: {
-                path: '<%= bower_src %>/backbone.marionette/lib/backbone.marionette.js'
+                path: '<%= bower_src %>/marionette/lib/backbone.marionette.js'
               , exports: 'Marionette'
             }
 
@@ -146,5 +148,5 @@ module.exports = function (grunt) {
   grunt.renameTask('simplemocha', 'test');
 
   // grunt.registerTask('default', ['karma', 'browserify:vendor', 'concurrent']);
-  grunt.registerTask('default', ['karma', 'browserify:vendor', 'concurrent']);
+  grunt.registerTask('default', ['browserify:vendor', 'concurrent']);
 };

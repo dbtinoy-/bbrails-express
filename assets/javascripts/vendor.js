@@ -11,7 +11,9 @@ global._ = global.underscore = require('lodash');
 //backbone need manual global registration
 global.Backbone = require('../bower_components/backbone/backbone.js');
 
-require('../bower_components/backbone.stickit/backbone.stickit.js');
+// require('../bower_components/backbone.stickit/backbone.stickit.js');
+//
+require('./lib/backbone.routefilter.js');
 
 //marionette needs manual global registration
 global.Marionette = require('marionette');
