@@ -35,8 +35,10 @@ function all(cb) {
 function findById(id, cb) {
   Crew.findOne({'_id': id}, function(err, member) {
     if (err) { return cb(err); }
+
     if (!member) { return cb(new Error(['crew id ', id, ' not found'].join(''))); }
-      return cb(null, member);
+
+    return cb(null, member);
   });
 }
 

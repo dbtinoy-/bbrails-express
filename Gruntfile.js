@@ -45,21 +45,46 @@ module.exports = function (grunt) {
             , exports: 'Modernizr'
             }
 
+          , jquery: {
+              path: '<%= bower_src %>/jquery/jquery.js',
+              exports: '$'
+            }
+
           , backbone: {
-              path: '<%= bower_src %>/backbone/backbone.js'
-            , exports: 'Backbone'
+                path: '<%= bower_src %>/backbone/backbone.js',
+                exports: 'Backbone',
+                depends: {
+                  underscore: 'underscore'
+                }
             }
 
           , marionette: {
-                path: '<%= bower_src %>/marionette/lib/backbone.marionette.js'
-              , exports: 'Marionette'
+              path: '<%= bower_src %>/marionette/lib/backbone.marionette.js',
+              exports: 'Marionette',
+              depends: {
+                jquery: '$',
+                backbone: 'Backbone',
+                underscore: '_'
+              }
+            }
+          , 'backbone.mutators': {
+              path: '<%= bower_src %>/backbone.mutators/backbone.mutators.js'
+            , exports: null
+            }
+
+          , 'underscore.string': {
+              path: '<%= bower_src %>/underscore.string/lib/underscore.string.js'
+            , exports: null
+            , depends: {
+                underscore: '_'
+              }
             }
 
           }
         //backbone need underscore alias :(
         , alias : [
             'lodash:underscore'
-          , '<%= bower_src %>/jquery/jquery.js:jquery'
+          , '<%= bower_src %>/backbone/backbone.js:Backbone'
           , '<%= bower_src %>/spinjs/spin.js:spin'
           ]
         }
@@ -83,11 +108,16 @@ module.exports = function (grunt) {
         livereload: true
       }
     , js: {
-        files: ['<%= app_cli_js %>/**/*.js', '<%= app_cli_js %>/**/*.hbs']
+        files: ['<%= app_cli_js %>/**/*.js', '<%= app_cli_js %>/**/*.hbs', '!<%= app_cli_js %>/vendor.js']
       , tasks: ['browserify:client']
       , options: {
           interrupt: true
         }
+      }
+
+    , vendor: {
+        files: ['<%= app_cli_js %>/vendor.js']
+      , tasks: ['browserify:vendor']
       }
 
     , karma: {

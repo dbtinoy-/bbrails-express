@@ -5,35 +5,41 @@ JabberApp.module('Entities', function(Entities, App, Backbone, Marionette, $, _)
       return this.get('divider');
     }
 
-  , isChosen: function() {
-      return this.get('chosen');
-    }
+  // , isChosen: function() {
+  //     return this.get('chosen');
+  //   }
 
-  , choose: function() {
-      this.set('chosen', true);
-    }
+  // , choose: function() {
+  //     this.set('chosen', true);
+  //   }
 
-  , unchoose: function() {
-      this.set('chosen', false);
-    }
+  // , unchoose: function() {
+  //     this.set('chosen', false);
+  //   }
 
-  , chooseByCollection: function() {
-      this.collection.choose(this);
-    }
+  // , chooseByCollection: function() {
+  //     this.collection.choose(this);
+  //   }
   });
 
   var NavCollection = Entities.Collection.extend({
     model: Nav
 
-  , choose: function(model) {
-      _(this.where({ chosen: true })).invoke('unchoose');
-      model.choose();
-    }
+  // , initialize: function() {
+  //     new Backbone.SingleChooser(this);
+  //   }
+
+  // , choose: function(model) {
+  //     _(this.where({ chosen: true })).invoke('unchoose');
+  //     model.choose();
+  //   }
 
   , chooseByName: function(nav) {
       this.choose(this.findWhere({name: nav}) || this.first() );
     }
   });
+
+  NavCollection.include('SingleChooser');
 
 
   var API = {

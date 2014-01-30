@@ -1,8 +1,9 @@
 /* jshint node:true */
 
-var users = require('./controllers/users');
-var crew = require('./controllers/crew');
-var accounts = require('./controllers/accounts');
+var users         = require('./controllers/users');
+var crew          = require('./controllers/crew');
+var locations     = require('./controllers/locations.sctrl');
+var accounts      = require('./controllers/accounts');
 var organizations = require('./controllers/organizations');
 
 function authenticate(passport) {
@@ -35,7 +36,11 @@ function routes(app, passport, config) {
   app.get('/crew/:id',  crew.show);
   app.put('/crew/:id',  crew.update);
   app.post('/crew',     crew.create);
-  app.del('/crew/:id',      crew.destroy);
+  app.del('/crew/:id',  crew.destroy);
+
+
+  app.get('/admin/locations', locations.all);
+  app.del('/admin/locations/:id', locations.destroy);
 }
 
 

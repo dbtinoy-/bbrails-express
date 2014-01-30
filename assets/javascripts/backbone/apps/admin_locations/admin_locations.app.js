@@ -1,6 +1,7 @@
 
 
 JabberApp.module('AdminLocationsApp', function(AdminLocationsApp, App, Backbone, Marionette, $, _) {
+  require('./new/new.ctrl.js');
   require('./list/list.ctrl.js');
 
   AdminLocationsApp.Router = Marionette.AppRouter.extend({
@@ -18,6 +19,13 @@ JabberApp.module('AdminLocationsApp', function(AdminLocationsApp, App, Backbone,
       , auth: 'default'
       });
     }
+
+  , newLocation: function(locations) {
+      return new AdminLocationsApp.New.Controller({
+        locations: locations
+      , region: App.dialogRegion
+      });
+    }
   };
 
 
@@ -27,6 +35,13 @@ JabberApp.module('AdminLocationsApp', function(AdminLocationsApp, App, Backbone,
     App.navigate('admin/locations');
     API.list(region);
   });
+
+
+  App.vent.on('new:location:clicked', function(locations) {
+    API.newLocation(locations);
+  });
+
+
 
   App.addInitializer(function() {
     new AdminLocationsApp.Router({

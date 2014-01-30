@@ -29,8 +29,9 @@ function buttons(Entities, App, Backbone, Marionette, $, _) {
     }
 
   , getDefaultButtons: function(buttons, model) {
+
       return _.defaults(buttons, {
-        primary: model.isNew() ? 'Create' : 'Update'
+        primary: model ? (model.isNew() ? 'Create' : 'Update') : false
       , cancel: 'Cancel'
       , placement: 'right'
       });

@@ -1,6 +1,7 @@
-require('./list');
-
 JabberApp.module('HeaderApp', function(HeaderApp, App, Backbone, Marionette, $, _) {
+
+  require('./list');
+
   this.startWithParent = false;
 
   var API = {

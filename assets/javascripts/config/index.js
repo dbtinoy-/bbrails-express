@@ -1,3 +1,3 @@
 require('./jquery');
 require('./backbone/sync');
-require('./marionette/regions/dialogs');
+// require('./marionette/regions/dialogs');

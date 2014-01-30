@@ -10,6 +10,10 @@ JabberApp.module('Views', function (Views, App, Backbone, Marionette, $, _) {
   var _remove = Marionette.View.prototype.remove
     , slice = Array.prototype.slice;
 
+  require('swag');
+
+  Swag.registerHelpers(Handlebars);
+
   function argsToArray(args) {
     return args.length > 0 ? slice.call(args, 0): [];
   }

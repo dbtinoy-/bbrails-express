@@ -22,28 +22,13 @@ JabberApp.module('AdminApp.List', function(List, App, Backbone, Marionette, $, _
     template: require('./tpl/_nav.hbs')
   , tagName: 'li'
 
-  , modelEvents: {
-      'change:chosen': 'changeChosen'
-    }
-
   , events: {
       'click a': 'choose'
     }
 
-  , onRender: function() {
-      if (this.model.isChosen()) this.$el.addClass('active');
-    }
-
-  , changeChosen: function(model, value, options) {
-      this.$el.toggleClass('active', value);
-    }
-
-  , choose: function(ev) {
-      ev.preventDefault();
-      this.model.chooseByCollection();
-    }
   });
 
+  List.Nav.include('Chooseable');
 
 
 

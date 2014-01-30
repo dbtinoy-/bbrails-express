@@ -4,19 +4,29 @@
 require('modernizr');
 
 //auto registration of jQuery & $ to global (window)
-require('../bower_components/jquery/jquery.js');
+var $ = require('jquery');
 
 //lodash need manual global registration (or maybe browserify shim ??)
 global._ = global.underscore = require('lodash');
 //backbone need manual global registration
-global.Backbone = require('../bower_components/backbone/backbone.js');
+var backbone = global.Backbone = require('backbone');
+backbone.$ = $;
 
-// require('../bower_components/backbone.stickit/backbone.stickit.js');
+// Import Underscore.string to separate object, because there are conflict functions (include, reverse, contains)
+_.str = require('underscore.string');
+
+// Mix in non-conflict functions to Underscore namespace if you want
+_.mixin(_.str.exports());
+
 //
-require('./lib/backbone.routefilter.js');
+require('./lib/backbone.routefilter');
+require('./lib/backbone.chooser');
+require('backbone.mutators');
 
 //marionette needs manual global registration
 global.Marionette = require('marionette');
+
+backbone.Cocktail = require('../bower_components/cocktail/Cocktail.js');
 
 require('../bower_components/backbone.syphon/lib/backbone.syphon.js');
 

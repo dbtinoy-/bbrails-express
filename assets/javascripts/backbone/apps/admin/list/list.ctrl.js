@@ -8,9 +8,8 @@ JabberApp.module('AdminApp.List', function(List, App, Backbone, Marionette, $, _
   , initialize: function(options) {
       var adminNavs = App.request('admin:nav:entities');
 
-
-      this.listenTo(adminNavs, 'change:chosen', function(model, value, options) {
-        if (value) App.vent.trigger('admin:nav:chose', model.get('name'), this.layout.articleRegion);
+      this.listenTo(adminNavs, 'collection:chose:one', function(chosen) {
+        App.vent.trigger('admin:nav:chose', chosen.get('name'), this.layout.articleRegion);
       });
 
       this.layout = this.getLayoutView();

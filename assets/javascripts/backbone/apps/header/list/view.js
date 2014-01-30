@@ -3,16 +3,9 @@ JabberApp.module('HeaderApp.List', function(List, App, Backbone, Marionette, $, 
   List.Nav = App.Views.ItemView.extend({
     tagName: 'li'
   , template: require('./tpl/_nav.hbs')
-
-  , modelEvents: {
-      'change:chosen': 'changeChosen'
-    }
-
-  , changeChosen: function(model, value, options) {
-      this.$el.toggleClass('active', value);
-    }
-
   });
+
+  List.Nav.include('Chooseable');
 
 
   List.Header = App.Views.CompositeView.extend({
