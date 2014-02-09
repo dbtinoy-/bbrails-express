@@ -1,8 +1,5 @@
 /*jshint node:true */
 
-var handleify = require('handleify');
-
-
 module.exports = function (grunt) {
   'use strict';
 
@@ -12,23 +9,35 @@ module.exports = function (grunt) {
     bundle_dest: 'public/bundle'
   , app_cli_path: 'assets/'
   , app_cli_js: '<%= app_cli_path %>/javascripts'
+  , app_cli_coffee: '<%= app_cli_path %>/coffee'
   , app_cli_less: '<%= app_cli_path %>/stylesheets'
-  , bower_src: '<%= app_cli_path %>/bower_components'
-
-
-  , browserify: {
-      client: {
-        src: ['<%= app_cli_js %>/backbone/app.js']
-      , dest: '<%= bundle_dest %>/bundle.js'
-      , options: {
-          debug: true
-        , fast: true
-        , transform: ['handleify']
-        }
+  , bower_src: 'bower_components'
+  
+  , js2coffee: {
+      each: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= app_cli_js %>',
+            src: ['**/*.js'],
+            dest: '<%= app_cli_path %>/coffee/',
+            ext: '.coffee'
+          }
+        ]
       }
-
-    , vendor: {
-        src: ['<%= app_cli_js %>/vendor.js']
+    }
+  , browserify: {
+    client: {
+      files: {
+        '<%= bundle_dest %>/bundle.js': ['<%= app_cli_coffee %>/**/*.coffee']
+      },
+      options: {
+          debug: true
+        , transform: ['coffeeify','handleify']
+      }
+    }
+    ,  vendor: {
+        src: ['<%= app_cli_coffee %>/vendor.js']
       , dest: '<%= bundle_dest %>/vendor.js'
       , noParse: [
           '<%= bower_src %>/modernizr/modernizr.js'
@@ -107,26 +116,40 @@ module.exports = function (grunt) {
       options: {
         livereload: true
       }
-    , js: {
-        files: ['<%= app_cli_js %>/**/*.js', '<%= app_cli_js %>/**/*.hbs', '!<%= app_cli_js %>/vendor.js']
-      , tasks: ['browserify:client']
-      , options: {
-          interrupt: true
+      , js: {
+          files: ['!<%= app_cli_coffee %>/vendor.js']
+        , tasks: ['browserify:server']
+        , options: {
+            interrupt: true
+          }
         }
-      }
-
+        , handlebars: {
+            files: '<%= app_cli_coffee %>/**/*.hbs'
+          , tasks: ['browserify:client']
+          , options: {
+              interrupt: true
+          }
+        }      
+        , coffee: {
+            files: ['<%= app_cli_coffee %>/**/*.coffee']
+          , tasks: ['browserify:client']
+          , options: {
+                interrupt: true
+              , events: ['changed', 'added']
+          }
+        }
     , vendor: {
-        files: ['<%= app_cli_js %>/vendor.js']
+        files: ['<%= app_cli_coffee %>/vendor.js']
       , tasks: ['browserify:vendor']
       }
 
-    , karma: {
-        files: ['<%= browserify.client.dest %>', 'test/browser/**/*-test.js']
-      , tasks: ['karma:unit:run']
-      , options: {
-          livereload: false
-        }
-      }
+    //, karma: {
+    //    files: ['<%= browserify.client.dest %>', 'test/browser/**/*-test.js']
+    //  , tasks: ['karma:unit:run']
+    //  , options: {
+    //      livereload: false
+    //    }
+    //  }
     , css: {
         files: ['<%= app_cli_less %>/**/*.less']
       , tasks: ['less']

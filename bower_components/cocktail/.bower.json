@@ -1,0 +1,33 @@
+{
+  "name": "backbone.cocktail",
+  "version": "0.5.1",
+  "homepage": "https://github.com/onsi/cocktail",
+  "authors": [
+    "Onsi Fakhouri <onsijoe@gmail.com>"
+  ],
+  "description": "Mixins for your Backbone Views",
+  "main": "Cocktail.js",
+  "keywords": [
+    "backbone",
+    "mixin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "spec"
+  ],
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "underscore": "~1.5.1"
+  },
+  "_release": "0.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.5.1",
+    "commit": "202ef965466d24f31ba1a3da80ae14f240e8f90e"
+  },
+  "_source": "git://github.com/onsi/cocktail.git",
+  "_target": "~0.5.1",
+  "_originalSource": "cocktail"
+}

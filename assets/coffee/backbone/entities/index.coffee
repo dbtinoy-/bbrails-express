@@ -1,0 +1,6 @@
+require './abstract/buttons.coffee'
+require './abstract/nav.coffee'
+require './crew.coffee'
+require './event.coffee'
+require './movies.coffee'
+require './location.coffee'

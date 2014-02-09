@@ -1,0 +1,7 @@
+require './concerns/index.coffee'
+require './entities/index.coffee'
+require './utilities/index.coffee'
+require './views/index.coffee'
+require './controllers/index.coffee'
+require './components/index.coffee'
+require './regions/index.coffee'

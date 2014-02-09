@@ -1,0 +1,5 @@
+require './view.coffee'
+require './collectionview.coffee'
+require './compositeview.coffee'
+require './itemview.coffee'
+require './layout.coffee'

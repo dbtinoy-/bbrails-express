@@ -1,0 +1,1 @@
+require './dialog_region.coffee'
